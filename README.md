@@ -18,6 +18,4 @@ Select an enterprise use case, learn about the business story, and implement it 
 - [HR automation](./usecases/ask-hr)
 - [Business automation for Competitive Analysis](./usecases/business-automation)
 - [Financial Research Analyst](./usecases/banking-financial-research-analyst)
-- (beta) [Auto insurance claims automation](./usecases/autoclaim-insurance)
-- (beta) [Retail Product Display Advisor](./usecases/retail/)
 
