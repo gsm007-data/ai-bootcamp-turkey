@@ -1,0 +1,159 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Auto Insurance Claim API",
+    "version": "1.0.0",
+    "description": "API to create and check auto insurance claims."
+  },
+  "servers": [
+    {
+      "url": "https://auto-insurance-fetch-insert-details.1v25kydgpc85.us-east.codeengine.appdomain.cloud"
+    }
+  ],
+  "paths": {
+     "/create_claim_request": {
+      "post": {
+        "summary": "Create a Claim Request",
+        "description": "Submits a new claim request for an auto insurance policy.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Full name of the customer"
+          },
+          {
+            "name": "estimated_cost",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            },
+            "description": "Estimated cost of the damage"
+          },
+          {
+            "name": "claim_request_details",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Details of the accident or claim"
+          },
+          {
+            "name": "vehicle_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Type of the vehicle (e.g., Car, Truck)"
+          },
+          {
+            "name": "vehicle_details",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Additional vehicle details (e.g., Make, Model)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Claim request response (success or failure)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Claim request created successfully"
+                    },
+                    "customer_id": {
+                      "type": "string",
+                      "example": "60695904"
+                    },
+                    "claim_number": {
+                      "type": "string",
+                      "example": "CLM994311"
+                    },
+                    "claim_request_details": {
+                      "type": "string",
+                      "example": "I was hit by a truck"
+                    },
+                    "detail": {
+                      "type": "string",
+                      "example": "Optional additional information, e.g., internal remarks or validation info"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/check_claim_status": {
+      "get": {
+        "summary": "Check Claim Status",
+        "description": "Retrieves the status of a claim using customer name and claim number.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the customer"
+          },
+          {
+            "name": "claim_number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Unique identifier of the claim"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved claim status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "claim_number": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "last_updated": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Claim not found"
+          },
+          "400": {
+            "description": "Missing or invalid parameters"
+          }
+        }
+      }
+    }
+  }
+}

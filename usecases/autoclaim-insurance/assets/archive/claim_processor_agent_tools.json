@@ -1,0 +1,185 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Auto Insurance Claim API",
+    "version": "1.0.3",
+    "description": "API for managing auto insurance claims: fetching, updating, and listing top claims."
+  },
+  "servers": [
+    {
+      "url": "https://auto-insurance-fetch-insert-details.1v25kydgpc85.us-east.codeengine.appdomain.cloud",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/fetch_open_claims": {
+      "get": {
+        "summary": "Fetch Open Claims",
+        "description": "Retrieves open claims for a specific customer using customer ID and claim number.",
+        "operationId": "fetchOpenClaims",
+        "parameters": [
+          {
+            "name": "customer_id",
+            "in": "query",
+            "required": true,
+            "description": "Unique ID of the customer",
+            "schema": {
+              "type": "integer",
+              "example": 60695904
+            }
+          },
+          {
+            "name": "claim_number",
+            "in": "query",
+            "description": "Unique claim number",
+            "schema": {
+              "type": "string",
+              "example": "CLM347697"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Claim details found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "claim_number": {
+                      "type": "string",
+                      "example": "CLM347697"
+                    },
+                    "customer_id": {
+                      "type": "integer",
+                      "example": 60695904
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Open"
+                    },
+                    "estimated_cost": {
+                      "type": "number",
+                      "example": 4500
+                    },
+                    "claim_request_details": {
+                      "type": "string",
+                      "example": "Rear bumper and tail light damage"
+                    },
+                    "vehicle_type": {
+                      "type": "string",
+                      "example": "Car"
+                    },
+                    "vehicle_details": {
+                      "type": "string",
+                      "example": "Toyota Corolla"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/update_claim_status": {
+      "post": {
+        "summary": "Update Claim Status",
+        "description": "Updates the status of a claim using claim number and new status as query parameters.",
+        "operationId": "updateClaimStatus",
+        "parameters": [
+          {
+            "name": "claim_status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["Open", "In Progress", "Closed", "Rejected"]
+            },
+            "description": "The new status of the claim."
+          },
+          {
+            "name": "claim_number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Unique identifier for the claim."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Claim status updated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "claim_number": {
+                      "type": "string"
+                    },
+                    "new_status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input parameters."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/top_5_open_claims": {
+      "get": {
+        "summary": "Get Top 5 Open Claims",
+        "description": "Retrieves the top 5 open insurance claims.",
+        "operationId": "getTop5OpenClaims",
+        "responses": {
+          "200": {
+            "description": "List of top 5 open claims",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "open_claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

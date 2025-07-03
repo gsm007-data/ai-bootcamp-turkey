@@ -1,0 +1,58 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "DuckDuckGo Search API",
+      "version": "1.0.0",
+      "description": "API to perform web search using DuckDuckGo for auto insurance-related queries."
+    },
+    "servers": [
+      {
+        "url": "https://auto-insurance-fetch-insert-details.1v25kydgpc85.us-east.codeengine.appdomain.cloud"
+      }
+    ],
+    "paths": {
+      "/duckduckgo_search": {
+        "get": {
+          "summary": "Search Auto Insurance Information",
+          "description": "Performs a DuckDuckGo search using the given query string.",
+          "parameters": [
+            {
+              "name": "query",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "The search query (e.g., laws for auto insurance in New York)"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful search result",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "title": { "type": "string" },
+                            "link": { "type": "string" },
+                            "snippet": { "type": "string" }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
