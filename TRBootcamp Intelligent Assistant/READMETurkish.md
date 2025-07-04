@@ -19,7 +19,3 @@ Yapay zeka destekli ajanik bir depo yönetim sisteminin uygulanması, SmartStora
 ## 📄 Adım Adım Uygulamalı Talimatlar
 watsonx.ai ve watsonx Orchestrate kullanarak bu kullanım senaryosunu nasıl uygulayabileceğinizi [bu belgede](./Intelligent%20AI%20Assistant.md) adım adım bulabilirsiniz.
 
-## Demo Videosu
-Çözümün video demosu burada yer almaktadır:
-
-https://github.ibm.com/skol/agentic-ai-client-bootcamp/assets/13654/480f782f-679b-4fea-8b23-19d95205a862
