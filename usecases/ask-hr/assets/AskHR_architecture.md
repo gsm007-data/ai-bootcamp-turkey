@@ -1,1 +1,0 @@
-<img width="1000" alt="image" src="arch_diagm.png">

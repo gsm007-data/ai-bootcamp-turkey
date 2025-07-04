@@ -1,1 +1,0 @@
-<img width="1000" alt="image" src="one_slider_r1.png">
