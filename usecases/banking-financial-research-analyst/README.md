@@ -57,5 +57,5 @@ You can find step-by-step instructions here :
 ## Demo Video
 A video demo of the solution is below:
 
-https://github.ibm.com/skol/agentic-ai-client-bootcamp/assets/3814/b8dcddde-9187-4a12-ba8f-9271573a0c30
+https://github.com/gsm007-data/ai-bootcamp-turkey/blob/tr_gsm/environment-setup/assets/Financial%20Analyst%20Agent%20Demo.mp4
 
