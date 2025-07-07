@@ -16,3 +16,9 @@ Select an enterprise use case, learn about the business story, and implement it 
 - [HR automation](./usecases/ask-hr)
 - [Business automation for Competitive Analysis](./usecases/business-automation)
 - [Financial Research Analyst](./usecases/banking-financial-research-analyst)
+
+## IBM Watsonx Orchestrate Agent Development Kit (ADK)
+A modular toolkit for building, testing, and deploying agents in IBM Watsonx Orchestrate workflows.
+Source: 
+- [ADK Laptop installation guide](https://github.ibm.com/WatsonOrchestrate/wxo-clients/wiki/watsonx-Orchestrate-Agent-Development-Kit-Laptop-Installation-Guide)
+- [ibm-watsonx-orchestrate-adk](https://github.com/ibm/ibm-watsonx-orchestrate-adk/)
